@@ -11,9 +11,16 @@ const getJWTKey = (): Uint8Array | null => {
 export async function middleware(request: NextRequest) {
   const publicPaths = [
     "/login",
+    "/register",
     "/api/auth/login",
+    "/api/auth/register",
     "/api/auth/lark",
     "/api/auth/lark/callback",
+    "/api/auth/lark/register",
+    "/api/auth/lark/process",
+    "/api/auth/lark/pending",
+    "/api/branches",
+    "/api/campaigns",
     "/auth/lark/callback",
   ];
   const rootPath = "/";
