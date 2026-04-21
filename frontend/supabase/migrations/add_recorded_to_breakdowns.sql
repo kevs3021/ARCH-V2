@@ -1,0 +1,1 @@
+ALTER TABLE breakdowns ADD COLUMN IF NOT EXISTS recorded BOOLEAN DEFAULT false;

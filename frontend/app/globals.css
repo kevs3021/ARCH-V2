@@ -1,0 +1,631 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-accent2: var(--accent2);
+
+  --color-onyx: #2D2640;
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+  --color-on-background: var(--on-background);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+
+  --radius-sm: 16px;
+  --radius-md: 18px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+}
+
+:root {
+  --background: hsl(224 30% 97%);
+  --foreground: hsl(224 40% 18%);
+  --primary: hsl(222 62% 52%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: rgba(255, 255, 255, 0.55);
+  --secondary-foreground: hsl(222 62% 52%);
+  --muted: hsl(224 40% 92%);
+  --muted-foreground: hsl(224 20% 50%);
+  --accent: hsl(222 62% 52%);
+  --destructive: hsl(0 84% 60%);
+  --border: hsl(224 30% 88%);
+  --input: hsl(224 40% 93%);
+  --ring: hsl(222 62% 52%);
+  --card: rgba(255, 255, 255, 0.55);
+  --card-foreground: hsl(224 40% 18%);
+  --accent2: hsl(193 65% 55%);
+
+  --surface: hsl(224 30% 97%);
+  --surface-dim: hsl(224 30% 92%);
+  --surface-container-lowest: rgba(255, 255, 255, 0.55);
+  --surface-container-low: hsl(224 40% 97%);
+  --surface-container: hsl(224 40% 92%);
+  --surface-container-high: hsl(224 30% 88%);
+  --surface-container-highest: hsl(224 30% 85%);
+  --on-surface: hsl(224 40% 18%);
+  --on-surface-variant: hsl(224 20% 50%);
+  --outline: hsl(224 30% 88%);
+  --outline-variant: rgba(73, 111, 210, 0.15);
+  --error: #EF4444;
+  --on-error: #ffffff;
+  --error-container: #FFCDD2;
+  --on-error-container: #B71C1C;
+  --on-background: hsl(224 40% 18%);
+}
+
+html.dark {
+  --background: hsl(222 84% 5%);
+  --foreground: hsl(210 40% 98%);
+  --primary: hsl(212 80% 65%);
+  --primary-foreground: hsl(222 47% 11%);
+  --secondary: hsl(217 33% 18%);
+  --secondary-foreground: hsl(212 80% 65%);
+  --muted: hsl(217 33% 18%);
+  --muted-foreground: hsl(215 20% 65%);
+  --accent: hsl(212 80% 65%);
+  --destructive: hsl(0 63% 31%);
+  --border: hsl(217 33% 18%);
+  --input: hsl(217 33% 18%);
+  --ring: hsl(213 27% 84%);
+  --card: rgba(30, 30, 40, 0.7);
+  --card-foreground: hsl(210 40% 98%);
+  --accent2: hsl(212 70% 55%);
+
+  --surface: hsl(222 84% 5%);
+  --surface-dim: hsl(222 84% 8%);
+  --surface-container-lowest: rgba(20, 20, 30, 0.7);
+  --surface-container-low: hsl(217 33% 10%);
+  --surface-container: hsl(217 33% 14%);
+  --surface-container-high: hsl(217 33% 18%);
+  --surface-container-highest: hsl(217 33% 22%);
+  --on-surface: hsl(210 40% 98%);
+  --on-surface-variant: hsl(215 20% 65%);
+  --outline: hsl(217 33% 25%);
+  --outline-variant: rgba(73, 111, 210, 0.25);
+  --error: #EF4444;
+  --on-error: #ffffff;
+  --error-container: #FFCDD2;
+  --on-error-container: #B71C1C;
+  --on-background: hsl(210 40% 98%);
+}
+
+/* ============================================ */
+/* BODY — Ambient Mesh Gradient Background       */
+/* ============================================ */
+
+html, body {
+  min-height: 100vh !important;
+}
+
+body {
+  background-color: var(--background) !important;
+  background-image:
+    radial-gradient(
+      ellipse 800px 600px at 8% 5%,
+      hsl(262 62% 82% / 0.6) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 700px 500px at 92% 8%,
+      hsl(193 65% 82% / 0.55) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 600px 450px at 50% 50%,
+      hsl(222 60% 90% / 0.35) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 500px 400px at 3% 90%,
+      hsl(193 70% 85% / 0.5) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 500px 400px at 95% 92%,
+      hsl(262 70% 85% / 0.5) 0%,
+      transparent 65%
+    ) !important;
+  background-attachment: fixed !important;
+  color: hsl(258 40% 18%);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+::selection {
+  background: hsl(222 62% 52% / 0.25);
+}
+
+/* ============================================ */
+/* GLASSMORPHISM                                 */
+/* ============================================ */
+
+html.dark .glass-card,
+html.dark .card,
+html.dark .glass {
+  background: rgba(30, 30, 45, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html.dark .glass-card:hover,
+html.dark .card:hover {
+  background: rgba(40, 40, 55, 0.7) !important;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 8px 32px rgba(73, 111, 210, 0.08),
+    0 2px 8px rgba(73, 111, 210, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.62) !important;
+  box-shadow:
+    0 12px 40px rgba(73, 111, 210, 0.1),
+    0 4px 12px rgba(73, 111, 210, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+html.dark .bg-white\/35 {
+  background-color: rgba(15, 23, 42, 0.48) !important;
+}
+
+html.dark .bg-white\/45 {
+  background-color: rgba(15, 23, 42, 0.55) !important;
+}
+
+html.dark .bg-white\/50 {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+html.dark .bg-white\/55 {
+  background-color: rgba(15, 23, 42, 0.66) !important;
+}
+
+html.dark .bg-white\/60 {
+  background-color: rgba(15, 23, 42, 0.72) !important;
+}
+
+.dropdown-panel {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+html.dark .dropdown-panel {
+  background: #0f172a !important;
+}
+
+html.dark .border-white\/45,
+html.dark .border-white\/50,
+html.dark .border-white\/35 {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+html.dark .hover\:bg-white\/35:hover,
+html.dark .hover\:bg-white\/55:hover,
+html.dark .hover\:bg-white\/75:hover {
+  background-color: rgba(148, 163, 184, 0.12) !important;
+}
+
+html.dark .hover\:bg-white\/10:hover {
+  background-color: rgba(148, 163, 184, 0.08) !important;
+}
+
+/* ============================================ */
+
+.card {
+  background: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow:
+    0 8px 32px rgba(73, 111, 210, 0.08),
+    0 2px 8px rgba(73, 111, 210, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.62) !important;
+  box-shadow:
+    0 12px 40px rgba(73, 111, 210, 0.1),
+    0 4px 12px rgba(73, 111, 210, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.card-data-cell {
+  background: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 4px solid hsl(222 62% 52%);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow:
+    0 8px 32px rgba(73, 111, 210, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+/* ============================================ */
+/* AMBIENT GRADIENT OVERLAY                      */
+/* ============================================ */
+
+.ambient-gradient {
+  position: relative;
+}
+
+.ambient-gradient::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 700px 500px at 10% 15%,
+      rgba(104, 73, 210, 0.18) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 600px 400px at 88% 75%,
+      rgba(75, 179, 210, 0.14) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 500px 350px at 50% 3%,
+      rgba(73, 111, 210, 0.12) 0%,
+      transparent 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================ */
+/* GRADIENTS                                     */
+/* ============================================ */
+
+.hero-gradient {
+  background: linear-gradient(135deg, #496fd2, #6849d2);
+  color: white;
+}
+
+.accent2-gradient {
+  background: linear-gradient(135deg, #496fd2, #49b3d2);
+  color: white;
+}
+
+/* ============================================ */
+/* BUTTONS                                       */
+/* ============================================ */
+
+.btn-primary {
+  background: linear-gradient(135deg, #496fd2, #6849d2);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5a7fe0, #7a5be0);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 40px rgba(73, 111, 210, 0.25);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: hsl(258 40% 18%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(73, 111, 210, 0.08);
+}
+
+.btn-tertiary {
+  background: transparent;
+  color: hsl(222 62% 52%);
+  border: none;
+  border-radius: 18px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-tertiary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================ */
+/* CARD AMBIENT SHADOWS                          */
+/* ============================================ */
+
+.card-ambient-primary {
+  box-shadow:
+    0 0 0 1px rgba(73, 111, 210, 0.12),
+    0 8px 32px rgba(73, 111, 210, 0.14),
+    0 2px 8px rgba(73, 111, 210, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+.card-ambient-blue {
+  box-shadow:
+    0 0 0 1px rgba(73, 179, 210, 0.12),
+    0 8px 32px rgba(73, 179, 210, 0.14),
+    0 2px 8px rgba(73, 179, 210, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ============================================ */
+/* SECTION LABEL                                 */
+/* ============================================ */
+
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: hsl(258 20% 50%);
+}
+
+/* ============================================ */
+/* INPUT FIELDS                                  */
+/* ============================================ */
+
+.input-field {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid hsl(224 30% 88%);
+  border-radius: 18px;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+  width: 100%;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: hsl(222 62% 52%);
+  box-shadow: 0 0 0 3px hsl(222 62% 52% / 0.15);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================ */
+/* SHADOWS                                       */
+/* ============================================ */
+
+.shadow-ambient {
+  box-shadow: 0 8px 32px rgba(73, 68, 84, 0.12);
+}
+
+/* ============================================ */
+/* TYPOGRAPHY                                    */
+/* ============================================ */
+
+.font-display {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.font-sans {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.text-display-md {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.text-label-sm {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-negative {
+  color: hsl(0 84% 20%);
+  background: hsl(0 84% 95%);
+  padding: 2px 8px;
+  border-radius: 18px;
+}
+
+/* ============================================ */
+/* TABLE                                         */
+/* ============================================ */
+
+.table-row-hover:hover {
+  background: hsl(258 40% 92% / 0.5);
+}
+
+/* ============================================ */
+/* GHOST BORDER                                  */
+/* ============================================ */
+
+.ghost-border {
+  outline: 1px solid rgba(255, 255, 255, 0.5);
+  outline-offset: -1px;
+}
+
+/* ============================================ */
+/* NAVIGATION                                    */
+/* ============================================ */
+
+.nav-item-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-item-hover {
+  position: relative;
+}
+
+.nav-item-hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: hsl(222 62% 52%);
+  border-radius: 0 2px 2px 0;
+  transition: height 0.2s ease-in-out;
+}
+
+.nav-item-hover:hover::before {
+  height: 100%;
+}
+
+/* ============================================ */
+/* SCROLLBAR                                     */
+/* ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+/* ============================================ */
+/* ANIMATIONS                                    */
+/* ============================================ */
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.mobile-menu-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes toast-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.badge-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================ */
+/* Smooth Theme Transitions                      */
+/* ============================================ */
+
+body, 
+.glass-card, 
+.card, 
+.glass,
+div, 
+span, 
+p, 
+h1, h2, h3, h4, h5, h6 {
+  transition: 
+    background-color 0.4s ease, 
+    color 0.4s ease, 
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+html,
+html body {
+  transition: 
+    background-color 0.4s ease, 
+    color 0.4s ease;
+}
